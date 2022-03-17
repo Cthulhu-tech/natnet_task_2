@@ -1,0 +1,48 @@
+.section_home{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: calc(100vh - 130px);
+
+}
+
+.section_home-input{
+
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 16px;
+    padding: 0 20px;
+    min-height: 56px;
+    font-weight: bold;
+    border-radius: 2px;
+    margin: 80px 0 40px;
+    background-color: #2A2F45;
+    font-family: 'Source Sans Pro', sans-serif;
+    width: clamp(100px, calc(100% - 20px), 470px);
+
+}
+
+.section_home-container_description{
+
+    width: 250px;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.section_home-container_description-pre{
+    
+    font-size: 16px;
+    max-width: 170px;
+    color: #8A91AB;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
