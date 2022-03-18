@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
+import { CitySearch } from '../../components/CitySearch/city';
 import './homeStyle.scss';
 
 export const HomePage = () => {
@@ -27,19 +28,13 @@ export const HomePage = () => {
         
     }
 
-    const CitySearch = () => {
-
-        return (dataCity.length > 0)
-        
-        &&
-
-        dataCity?.data?.map((city) => {
-            return <p className="section-home__paragraph-city">{city.city}</p>
-        })
-
-    }
-
     useEffect(() => {
+
+            if(city === ""){
+
+                setDataCity("");
+
+            }
 
             if(city.length % 3 === 0 && city !== ""){
 
@@ -57,9 +52,17 @@ export const HomePage = () => {
 
                 <div className="section-home__input-container">
                     <input onChange={setCityName} placeholder="Укажите город" type="text" className="section-home__input" />
+                    {city.length >= 3 
+                        &&
                     <div className="section-home__towhs">
-                        <CitySearch/>
-                    </div>
+                        {dataCity?.data?.length > 0 
+                        ? 
+                        <CitySearch {...{dataCity, city}}/> 
+                        : 
+                        <div className="section-home__container-city">
+                            <span className="section-home__target-city">Ничего не найдено</span>
+                        </div>}
+                    </div>}
                 </div>
 
                 <div className="container-description">

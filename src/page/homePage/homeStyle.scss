@@ -16,7 +16,7 @@
     font-size: 16px;
     padding: 0 20px;
     min-height: 56px;
-    font-weight: bold;
+    font-weight: 400;
     border-radius: 2px;
     background-color: #2A2F45;
     font-family: 'Source Sans Pro', sans-serif;
@@ -27,7 +27,6 @@
 .container-description{
 
     width: 250px;
-    height: 340px;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -75,9 +74,9 @@
 
 .container-description__image{
 
-    margin: 5px;
     width: 24px;
     height: 34px;
+    margin: 20px;
 
 }
 
@@ -95,18 +94,43 @@
     display: flex;
     position: relative;
     align-items: center;
-    margin: 80px 0 40px;
+    margin: 80px 0 35px;
     flex-direction: column;
 
 }
 
 .section-home__towhs{
-    width: 100%;
-    padding: 10px;
+
+    top: 56px;
+    padding: 0 20px;
+    position: absolute;
+    border-radius: 2px;
+    background-color: #30354B;
+    width: clamp(100px, 100% - 20px, 470px);
+
 }
 
-.section-home__paragraph-city{
+.section-home__target-city{
 
     color: #fff;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+.section-home__untarget-city{
+
+    font-size: 16px;
+    font-weight: 400;
+    color: #8A91AB;
+    font-family: 'Source Sans Pro', sans-serif;
+
+}
+
+.section-home__container-city{
+
+    width: 100%;
+    padding: 10px 10px;
 
 }
