@@ -1,7 +1,7 @@
+import { LayoutComponents } from "./components/layoutComponent/layout";
 import {BrowserRouter, Routes, Route } from "react-router-dom";
 import { HomePage } from "./page/homePage/homePage";
 import { CityPage } from "./page/CityPage/cityPage";
-import { LayoutComponents } from "./components/layoutComponent/layout";
 
 export const App = () => {
 

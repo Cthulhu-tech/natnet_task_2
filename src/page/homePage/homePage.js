@@ -15,39 +15,48 @@ export const HomePage = () => {
 
     }
 
-    const fetcDataCity = async () => {
-        
+    const fetcDataCity = () => {
+
+        let isMounted = true;
+
         if(loading)
-            await fetch(`http://geodb-free-service.wirefreethought.com/v1/geo/cities?namePrefix=${city}&hateoasMode=false&languageCode=ru&limit=5&offset=0`)
+             fetch(`http://geodb-free-service.wirefreethought.com/v1/geo/cities?namePrefix=${city}&hateoasMode=false&languageCode=ru&limit=5&offset=0`)
             .then((data) => data.json())
-            .then((dataJson) => setDataCity(dataJson))
+            .then((dataJson) => {
+                if(isMounted)
+                    setDataCity(dataJson);
+            })
             .catch(() => setDataCity({data:[{city: "Ничего не найдено"}]}));
 
-        await setLoading(false);
+        setLoading(false);
         
-        
+        return () => { isMounted = false };
     }
 
-    useEffect(() => {
+    useEffect(() => { 
 
-            if(city === ""){
+        let isMounted = true;
+        
+        if(city.length < 3 && isMounted){
+            
+            setDataCity("");
 
-                setDataCity("");
+        }
 
-            }
+        if(city.length % 3 === 0 && city !== "" && isMounted){
 
-            if(city.length % 3 === 0 && city !== ""){
+            fetcDataCity(isMounted);
 
-                fetcDataCity();
-    
-            }else{
-    
+        }else{
+            if(isMounted)
                 setLoading(true);
-    
-            }
+
+        }
+
+        return () => { isMounted = false };
 
     }, [city, dataCity, loading]);
-
+    
     return  <section className="section-home">
 
                 <div className="section-home__input-container">
@@ -68,10 +77,10 @@ export const HomePage = () => {
                 <div className="container-description">
 
                     <div className="sub-container-description">
-                        <img className="container-description__pointer"  src="img/Stroke.svg"/>  
+                        <object className="container-description__pointer"  data="img/Stroke.svg"/>  
                         <p className="container-description__paragraph"> 
                         Начните вводить город, например, 
-                        <Link to="ijevsk" className="container-description__link">Ижевск</Link>
+                        <Link to="Ижевск" className="container-description__link">Ижевск</Link>
                         </p>
                     </div>
 
@@ -79,7 +88,7 @@ export const HomePage = () => {
                     Используйте значок «закладки»,
                     чтобы закрепить город на главной
                     </p>
-                    <img className="container-description__image"  src="img/Vector.svg"/>
+                    <object className="container-description__image"  data="img/Vector.svg"/>
                 </div>
             </section>
 
