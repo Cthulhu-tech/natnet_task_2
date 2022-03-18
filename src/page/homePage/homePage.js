@@ -1,39 +1,66 @@
-import { useState } from 'react';
-import PlacesAutocomplete from 'react-places-autocomplete';
+import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import './homeStyle.scss';
 
 export const HomePage = () => {
 
     const [city, setCity] = useState("");
+    const [dataCity, setDataCity] = useState("");
+    const [loading, setLoading] = useState(true);
 
-    const handleSelect = async value => {};
+    const setCityName = (event) => {
+        
+        setCity(event.target.value);
 
-    const Suggestions = (suggestions) => {
+    }
 
-        return suggestions.map((city) => {
-            
-            console.log(city)
-            return <div>{city.terms[0].value}</div>
-            
+    const fetcDataCity = async () => {
+        
+        if(loading)
+            await fetch(`http://geodb-free-service.wirefreethought.com/v1/geo/cities?namePrefix=${city}&hateoasMode=false&languageCode=ru&limit=5&offset=0`)
+            .then((data) => data.json())
+            .then((dataJson) => setDataCity(dataJson))
+            .catch(() => setDataCity({data:[{city: "Ничего не найдено"}]}));
+
+        await setLoading(false);
+        
+        
+    }
+
+    const CitySearch = () => {
+
+        return (dataCity.length > 0)
+        
+        &&
+
+        dataCity?.data?.map((city) => {
+            return <p className="section-home__paragraph-city">{city.city}</p>
         })
 
     }
 
+    useEffect(() => {
+
+            if(city.length % 3 === 0 && city !== ""){
+
+                fetcDataCity();
+    
+            }else{
+    
+                setLoading(true);
+    
+            }
+
+    }, [city, dataCity, loading]);
+
     return  <section className="section-home">
 
-                <PlacesAutocomplete 
-                    value={city} 
-                    onChange={setCity} 
-                    onSelect={handleSelect}>
-
-                    {({getInputProps, suggestions, getSuggestionItemProps, loading}) => 
-                    (<>
-                    <input {...getInputProps({placeholder:"Укажите город", type:"text", className:"section-home__input"})}/>
-                    {Suggestions(suggestions)}
-                    </>)}
-
-                </PlacesAutocomplete>
+                <div className="section-home__input-container">
+                    <input onChange={setCityName} placeholder="Укажите город" type="text" className="section-home__input" />
+                    <div className="section-home__towhs">
+                        <CitySearch/>
+                    </div>
+                </div>
 
                 <div className="container-description">
 
