@@ -2,7 +2,7 @@ import './cityStyle.scss';
 
 export const CityPage = () => {
 
-    return  <section className="section_city">
+    return  <section className="section-city">
                 city
             </section>
 

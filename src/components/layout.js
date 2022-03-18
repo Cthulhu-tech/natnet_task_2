@@ -1,18 +1,19 @@
-import { Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 
 export const LayoutComponents = () => {
 
     return  <>
-            <header>
-                <div className="header_image_container">
-                    <img className="header_image_logo"  src="./img/Лого.svg"/>
-                    <p className="header_text">WeatherCheck</p>
+            <header className="header">
+                <div className="header-image__container">
+                    <Link to="/" className="header-image__link">
+                        <img className="header-image__logo"  src="./img/Лого.svg"/>
+                        <p className="header-text">WeatherCheck</p>
+                    </Link>
                 </div>
             </header>
-            <main>
+            <main className="main">
                 <Outlet/>
             </main>
-            <footer/>
+            <footer className="footer"/>
             </>
-
 }

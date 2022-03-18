@@ -7,20 +7,13 @@
 
 }
 
-a{
-
-    color: white;
-    text-decoration: 1.5px underline dotted;
-
-}
-
-body{
+.body{
 
     background-color: #161B30;
     
 }
 
-header{
+.header{
 
     display: flex;
     padding: 0 20px;
@@ -31,7 +24,7 @@ header{
 
 }
 
-.header_image_container{
+.header-image__container{
 
     display: flex;
     max-width: 200px;
@@ -39,7 +32,14 @@ header{
 
 }
 
-.header_text{
+.header-image__link{
+
+    display: flex;
+    text-decoration: none;
+
+}
+
+.header-text{
     
     color: white;
     font-size: 19px;
@@ -48,14 +48,14 @@ header{
     
 }
 
-.header_image_logo{
+.header-image__logo{
 
     width: 30px;
     height: 30px;
 
 }
 
-main{
+.main{
 
     margin: 0 auto;
     min-height: calc(100vh - 130px);
@@ -63,7 +63,7 @@ main{
 
 }
 
-footer{
+.footer{
 
     max-width: 100%;
     min-height: 65px;

@@ -2,6 +2,6 @@ import './errorStyle.scss';
 
 export const ErrorPage = () => {
 
-    return <section className="section_error" >404</section>
+    return <section className="section-error">404</section>
 
 }
