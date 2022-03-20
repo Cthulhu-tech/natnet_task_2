@@ -191,6 +191,12 @@
 
 @media screen and (max-width: 576px) {
 
+    .section-home__container-city{
+
+        width: calc(100% - 60px);
+
+    }
+
     .section-home__input{
 
         width: calc(100% - 60px);
