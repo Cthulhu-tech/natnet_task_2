@@ -9,14 +9,6 @@ export const HomePage = () => {
     const [dataCity, setDataCity] = useState("");
     const [loading, setLoading] = useState(true);
 
-    document.addEventListener('keydown' , (event) => {
-
-        if(event.key === 13) {
-            event.preventDefault();
-        }
-
-    })
-
     const setCityName = (event) => {
         
         setCity(event.target.value);
@@ -83,10 +75,10 @@ export const HomePage = () => {
     }
     
     return  <section className="section-home">
-                <div className="section-home__input-container">
+                <form className="section-home__input-container">
                     <input onChange={setCityName} placeholder="Укажите город" type="text" className="section-home__input"/>
                     <LogicInput/>
-                </div>
+                </form>
                 <DescriptionOrFavorite/>
             </section>
 
