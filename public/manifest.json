@@ -5,7 +5,17 @@
     {
       "src": "icon.svg",
       "type": "image/svg",
-      "sizes": "any"
+      "sizes": "512x512"
+    },
+    {
+      "src": "img/Лого.svg",
+      "type": "image/svg",
+      "sizes": "512x512"
+    },
+    {
+      "src": "App_icon.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "start_url": ".",
