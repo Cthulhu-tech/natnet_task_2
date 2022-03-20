@@ -23,12 +23,12 @@ export const HomePage = () => {
 
     }
 
-    const fetcDataCity = () => {
+    const fetcDataCity = async() => {
 
         let isMounted = true;
 
         if(loading)
-            fetch(`http://geodb-free-service.wirefreethought.com/v1/geo/cities?namePrefix=${city}&hateoasMode=false&languageCode=ru&limit=5&offset=0`)
+            await fetch(`http://geodb-free-service.wirefreethought.com/v1/geo/cities?namePrefix=${city}&hateoasMode=false&languageCode=ru&limit=5&offset=0`)
             .then((data) => data.json())
             .then((dataJson) => {
                 if(isMounted)
@@ -36,12 +36,13 @@ export const HomePage = () => {
             })
             .catch(() => setDataCity({data:[{city: "Ничего не найдено"}]}));
 
-        setLoading(false);
+        await setLoading(false);
         
         return () => { isMounted = false };
     }
 
-    useEffect(() => { 
+    useEffect(() => {
+
         let isMounted = true;
         document.body.classList.remove('section-city__background');
 
@@ -52,7 +53,7 @@ export const HomePage = () => {
         }
 
         if(city.length % 3 === 0 && city !== "" && isMounted){
-
+            
             fetcDataCity(isMounted);
 
         }else{
@@ -66,6 +67,7 @@ export const HomePage = () => {
     }, [city, dataCity, loading]);
 
     const LogicInput = () => {
+
         return    (city.length) >= 3 
                         &&
                     <div className="section-home__towhs">
@@ -77,6 +79,7 @@ export const HomePage = () => {
                             <span className="section-home__target-city">Ничего не найдено</span>
                         </div>}
                     </div>
+
     }
     
     return  <section className="section-home">
