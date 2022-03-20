@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link } from "react-router-dom";
 import { CitySearch } from '../../components/CitySearch/city';
+import { DescriptionOrFavorite } from '../../components/DescriptionOrFavorite/DescriptionOrFavorite';
 import './homeStyle.scss';
 
 export const HomePage = () => {
@@ -8,6 +8,14 @@ export const HomePage = () => {
     const [city, setCity] = useState("");
     const [dataCity, setDataCity] = useState("");
     const [loading, setLoading] = useState(true);
+
+    document.addEventListener('keydown' , (event) => {
+
+        if(event.key === 13) {
+            event.preventDefault();
+        }
+
+    })
 
     const setCityName = (event) => {
         
@@ -20,7 +28,7 @@ export const HomePage = () => {
         let isMounted = true;
 
         if(loading)
-             fetch(`http://geodb-free-service.wirefreethought.com/v1/geo/cities?namePrefix=${city}&hateoasMode=false&languageCode=ru&limit=5&offset=0`)
+            fetch(`http://geodb-free-service.wirefreethought.com/v1/geo/cities?namePrefix=${city}&hateoasMode=false&languageCode=ru&limit=5&offset=0`)
             .then((data) => data.json())
             .then((dataJson) => {
                 if(isMounted)
@@ -34,9 +42,9 @@ export const HomePage = () => {
     }
 
     useEffect(() => { 
-
         let isMounted = true;
-        
+        document.body.classList.remove('section-city__background');
+
         if(city.length < 3 && isMounted){
             
             setDataCity("");
@@ -56,12 +64,9 @@ export const HomePage = () => {
         return () => { isMounted = false };
 
     }, [city, dataCity, loading]);
-    
-    return  <section className="section-home">
 
-                <div className="section-home__input-container">
-                    <input onChange={setCityName} placeholder="Укажите город" type="text" className="section-home__input" />
-                    {city.length >= 3 
+    const LogicInput = () => {
+        return    (city.length) >= 3 
                         &&
                     <div className="section-home__towhs">
                         {dataCity?.data?.length > 0 
@@ -71,25 +76,15 @@ export const HomePage = () => {
                         <div className="section-home__container-city">
                             <span className="section-home__target-city">Ничего не найдено</span>
                         </div>}
-                    </div>}
-                </div>
-
-                <div className="container-description">
-
-                    <div className="sub-container-description">
-                        <object className="container-description__pointer"  data="img/Stroke.svg"/>  
-                        <p className="container-description__paragraph"> 
-                        Начните вводить город, например, 
-                        <Link to="Ижевск" className="container-description__link">Ижевск</Link>
-                        </p>
                     </div>
-
-                    <p className="container-description__paragraph-description">
-                    Используйте значок «закладки»,
-                    чтобы закрепить город на главной
-                    </p>
-                    <object className="container-description__image"  data="img/Vector.svg"/>
+    }
+    
+    return  <section className="section-home">
+                <div className="section-home__input-container">
+                    <input onChange={setCityName} placeholder="Укажите город" type="text" className="section-home__input"/>
+                    <LogicInput/>
                 </div>
+                <DescriptionOrFavorite/>
             </section>
 
 }

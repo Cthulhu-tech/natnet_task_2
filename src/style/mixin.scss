@@ -1,0 +1,16 @@
+@mixin textGenerate ($size: 16px , $color: #8A91AB, $weight: bold){
+
+    color: $color;
+    font-size: $size;
+    font-weight: $weight;
+    text-decoration: none;
+    font-family: "Source Sans Pro", sans-serif;
+
+}
+
+@mixin sectionStandart {
+
+    max-width: 100%;
+    min-height: calc(100vh - 130px);
+
+}

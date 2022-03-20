@@ -1,6 +1,7 @@
+@import "../../style/mixin.scss";
+
 .section-error{
 
-    max-width: 100%;
-    min-height: calc(100vh - 130px);
+    @include sectionStandart;
 
 }

@@ -1,7 +1,14 @@
+@import "../../style/mixin.scss";
+
 .section-city{
     
-    max-width: 100%;
-    min-height: calc(100vh - 130px);
+    @include sectionStandart;
+
+}
+
+.section-city__background{
+
+    background: radial-gradient(80.36% 80.36% at 50% 0%, #5A607C 0%, #161B30 100%);
 
 }
 
@@ -17,11 +24,7 @@
 
 .section-city__link{
 
-    font-size: 16px;
-    color: #8A91AB;
-    font-weight: bold;
-    text-decoration: none;
-    font-family: "Source Sans Pro", sans-serif;
+    @include textGenerate;
 
 }
 
@@ -60,18 +63,103 @@
 
     width: 15px;
     height: 20px;
+    cursor: pointer;
     mask: url("../../../public/img/Vector.svg") center/100% 100% no-repeat;
     background-color: #8A91AB;
-
-    &:hover{
-
-        background-color: white;
-
-    }
+    
 }
 
 .favorite{
 
     background-color: white;
+
+}
+
+
+.section-city__weather-information{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+.section-city__weather-information_name{
+
+    @include textGenerate(clamp(24px,100%,56px), white, 500);
+
+}
+
+.section-city__weather-information_description{
+
+    line-height: 110%;
+    text-align: center;
+    @include textGenerate(16px, white, 400);
+
+}
+
+.section-city__weather-ico{
+
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 440px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.section-city__weather-ico_svg{
+
+    width: 190px;
+    height: 190px;
+
+}
+
+.section-city__weather-ico_temperature{
+
+    background: linear-gradient(180deg, #FFFFFF 11.65%, rgba(255, 255, 255, 0) 139.47%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    @include textGenerate(130px, white, bold);
+
+
+}
+
+.section-city__weather-ico_barometer{
+
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+
+}
+
+.section-city__weather-information_description-time{
+
+    width: 100%;
+    margin-top: 20px;
+    text-align: center;
+    @include textGenerate;
+
+}
+
+.section-city__load-container{
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    min-height: calc(100vh - 200px);
+
+}
+
+.section-city__load-paragraph{
+
+    width: 100%;
+    text-align: center;
+    @include textGenerate(16px, white, bold);
 
 }

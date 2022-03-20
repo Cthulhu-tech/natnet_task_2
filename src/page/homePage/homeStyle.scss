@@ -1,10 +1,11 @@
+@import "../../style/mixin.scss";
+
 .section-home{
 
-    width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
-    min-height: calc(100vh - 130px);
+    @include sectionStandart;
 
 }
 
@@ -12,13 +13,11 @@
 
     border: none;
     outline: none;
-    color: white;
-    font-size: 16px;
     padding: 0 20px;
     min-height: 56px;
-    font-weight: 400;
     border-radius: 2px;
     background-color: #2A2F45;
+    @include textGenerate(16px, white, 400);
     font-family: 'Source Sans Pro', sans-serif;
     width: clamp(100px, calc(100% - 20px), 470px);
 
@@ -44,24 +43,18 @@
 
 .container-description__paragraph{
     
-    font-size: 16px;
     max-width: 170px;
-    color: #8A91AB;
-    font-weight: bold;
     text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
+    @include textGenerate;
 
 }
 
 .container-description__paragraph-description{
 
-    font-size: 16px;
     max-width: 100%;
     margin-top: 40px;
-    color: #8A91AB;
-    font-weight: bold;
     text-align: center;
-    font-family: 'Source Sans Pro', sans-serif;
+    @include textGenerate;
 
 }
 
@@ -104,7 +97,7 @@
     top: 56px;
     padding: 0 20px;
     position: absolute;
-    border-radius: 2px;
+    border-radius: 0 0 2px 2px;
     background-color: #30354B;
     width: clamp(100px, 100% - 20px, 470px);
 
@@ -112,19 +105,13 @@
 
 .section-home__target-city{
 
-    color: #fff;
-    font-size: 16px;
-    font-weight: 400;
-    font-family: 'Source Sans Pro', sans-serif;
+    @include textGenerate(16px, #fff, 400);
 
 }
 
 .section-home__untarget-city{
 
-    font-size: 16px;
-    font-weight: 400;
-    color: #8A91AB;
-    font-family: 'Source Sans Pro', sans-serif;
+    @include textGenerate(16px, #8A91AB, 400);
 
 }
 
@@ -132,7 +119,7 @@
 
     width: 100%;
     min-height: 25px;
-    padding: 10px 10px;
+    padding: 10px 0;
 
 }
 
@@ -140,5 +127,64 @@
 
     max-width: 100%;
     text-decoration: none;
+
+}
+
+.container-favorite{
+
+    gap: 50px;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    list-style: none;
+    text-align: center;  
+    align-items: center;
+    justify-items: center;
+    width: clamp(200px,100%,855px);
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  
+
+}
+
+.container-favorite__temperature{
+
+    display: flex;
+    padding: 10px;
+    height: 190px;
+    border-radius: 6px;
+    align-items: center;
+    background: #1f253a;
+    flex-direction: column;
+    justify-content: space-around;
+    width: clamp(160px,100%,250px);
+
+}
+
+.container-favorite__temperature-image{
+
+    width: 75px;
+    height: 75px; 
+
+}
+
+.container-favorite__paragraph-name{
+
+    @include textGenerate(14px, white, 700);
+
+}
+
+.container-favorite__paragraph-temperature{
+
+    @include textGenerate(40px, white, 900);
+
+}
+
+.container-favorite__link{
+
+    display: flex;
+    height: 190px;
+    margin: 17.5px;
+    text-decoration: none;
+    width: clamp(160px,100%,250px);
 
 }
