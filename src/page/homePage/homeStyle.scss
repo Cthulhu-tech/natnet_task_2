@@ -188,3 +188,41 @@
     width: clamp(160px,100%,250px);
 
 }
+
+@media screen and (max-width: 576px) {
+
+    .section-home__input{
+
+        width: calc(100% - 60px);
+
+    }
+
+    .container-favorite__link{
+
+        margin: 10px;
+
+    }
+    
+    .container-favorite{
+
+        gap: 0;
+        margin: 0;
+        width: 100%;
+
+    }
+
+    .container-favorite__temperature{
+
+        padding: 0px;
+
+    }
+
+    .container-favorite__link{
+
+        width: 160px;
+        min-width: 160px;
+        align-items: center;
+
+    }
+
+}
