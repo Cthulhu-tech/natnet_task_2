@@ -163,3 +163,14 @@
     @include textGenerate(16px, white, bold);
 
 }
+
+@media screen and (max-width: 576px) {
+
+    .section-city__navigation{
+
+        margin: 0 auto;
+        width: calc(100% - 40px);
+    
+    }
+
+}
